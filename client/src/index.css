@@ -2,9 +2,8 @@
 
 /* Setting up color variables for dark and light mode*/
 #root {
-    --dark-bg-color: #21295c;
-    --dark-thumb-color: #7a7f9d;
-    --light-bg-color:#ffd166;
+    --dark-bg-color: white;
+    --dark-thumb-color: gray;
 }
   
 

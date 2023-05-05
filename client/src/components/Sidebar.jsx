@@ -109,6 +109,11 @@ const SideBar = ({
         setActive(pathname.substring(1))
     }, [pathname])
 
+    const handleClick = () => {
+        navigate("/")
+        setActive("")
+    }
+
 
 
     return <Box component="nav" 
@@ -137,7 +142,12 @@ const SideBar = ({
                 <Box m="1.5rem 2rem 2rem 3rem" >
                     <FlexBetween color={theme.palette.secondary.main}>
                         <Box display="flex" alignItems="center" gap="0.5rem">
-                            <Typography variant="h4" fontWeight="bold">Oualid</Typography>
+                            <Typography variant="h4" fontWeight="bold" sx={{
+                              ":hover": {
+                                cursor: "pointer",
+                                opacity: "0.6",
+                              }
+                            }} onClick={handleClick}>Dashboard</Typography>
                         </Box>
                         {!isNonMobile && <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
                                 <ChevronLeft />
