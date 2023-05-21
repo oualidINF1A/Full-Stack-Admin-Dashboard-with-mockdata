@@ -67,7 +67,9 @@ const Dashboard = () => {
             fontWeight:"bold",
             padding:"10px 20px",
 
-          }}>
+          }}
+          onClick={() => window.print()}
+          >
             <DownloadOutlined sx={{marginRight:"10px"}}/>
             Download Reports</Button>
         </Box>
@@ -86,11 +88,13 @@ const Dashboard = () => {
       >
         {/* Row 1  */}
         <StatBox title="Total Customers" value={data && data.totalCustomers}
-        increase={customerIncreasePercentage} description="Since last month" icon={
+        increase={customerIncreasePercentage} description="From last month" icon={
           <PersonAdd sx={{color:theme.palette.secondary[300], fontSize:"26px"}}/>
         } page="customers"/>
-        <StatBox title="Sales Today" value={data && data.todayStats.totalSales}
-        increase={daySalesIncreasePercentage} description="Since last month" icon={
+        <StatBox title="Sales Today" value={data && 
+        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(
+          data.todayStats.totalSales)}
+        increase={daySalesIncreasePercentage} description="From yesterday" icon={
           <Today sx={{color:theme.palette.secondary[300], fontSize:"26px"}}/>
         } page="daily"/>
 
@@ -103,13 +107,16 @@ const Dashboard = () => {
           <OverviewChart view="sales" isDashboard data={data && data.overviewChart}/>
         </Box>
 
-        <StatBox title="Monthly Sales" value={data && data.thisMonthStats.totalSales}
-        increase={monthSalesIncreasePercentage} description="Since last month" icon={
+        <StatBox title="Monthly Sales" value={data &&  
+        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.thisMonthStats.totalSales)}
+        increase={monthSalesIncreasePercentage} description="From last month" icon={
           <CalendarMonth sx={{color:theme.palette.secondary[300], fontSize:"26px"}}/>
         } page="monthly"/>
 
-        <StatBox title="Yearly Sales" value={data && data.yearlySalesTotal}
-        increase={yearlySalesIncreasePercentage} description="Since last month" icon={
+        <StatBox title="Yearly Sales" value={data && 
+        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(
+          data.yearlySalesTotal)}
+        increase={yearlySalesIncreasePercentage} description="From last year" icon={
           <AttachMoney sx={{color:theme.palette.secondary[300], fontSize:"26px"}}/>
         }/>
 

@@ -10,6 +10,7 @@ import clientRoutes from "./routes/client.js";
 import generalRoutes from "./routes/general.js";
 import managementRoutes from "./routes/management.js";
 import salesRoutes from "./routes/sales.js";
+import {MongoClient, ServerApiVersion} from 'mongodb';
 
 // data imports from data folder
 import User from "./models/User.js";
@@ -56,18 +57,21 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => {
+  .then(() => { 
     app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
 
     //data seeding only done once
     //Product.insertMany(dataProduct)
     //ProductStat.insertMany(dataProductStat)
-    //Transaction.insertMany(dataTransaction)
-    //User.insertMany(dataUser)
-    //OverallStat.insertMany(dataOverallStat);
+    //Transaction.insertMany(dataTransaction) 
+    //User.insertMany(dataUser) 
+    //OverallStat.insertMany(dataOverallStat); 
     //AffiliateStat.insertMany(dataAffiliateStat);
     
   })
   .catch((error) => {
     console.log(`${error.message} did not connect with database!`);
+    console.log(error)
   });
+
+  
